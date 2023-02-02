@@ -39,7 +39,7 @@ class MessageController {
         return ResponseEntity.ok(addedMessage)
     }
 
-    @GetMapping("/message/{id}")
+    @DeleteMapping("/message/{id}")
     fun deleteMessage(@PathVariable id:String): ResponseEntity<Any> {
         var message : Message?
         message = messageDao.findById(id = id).orElse(null)

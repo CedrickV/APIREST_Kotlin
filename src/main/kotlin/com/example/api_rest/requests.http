@@ -3,7 +3,7 @@ POST http://localhost:8080/message
 Content-Type: application/json
 
 {
-  "id" : "5146",
+  "id" : "1",
   "text": "Hello!"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:8080/message
 Content-Type: application/json
 
 {
-  "id" : "54",
+  "id" : "ok",
   "text": "Bonjour!"
 }
 
@@ -23,18 +23,81 @@ POST http://localhost:8080/message
 Content-Type: application/json
 
 {
-  "id" : "1452",
+  "id" : "ko",
   "text": "Privet!"
 }
 
 ### Get all the messages
 GET http://localhost:8080/message
 
-### Get all the messages
-GET http://localhost:8080/message
+### Post "Hello! 1542"
+POST http://localhost:8080/message
+Content-Type: application/json
+
+{
+ "id": "1542",
+ "text": "Hello!"
+}
+
+### Get the message by its id OK
+GET http://localhost:8080/message/ok
+
+### Get the message by its id KO
+GET http://localhost:8080/message/ko
+
+### Post empty not body
+POST http://localhost:8080/message
+Content-Type: application/json
+
+### Post ivalide JSON 1
+POST http://localhost:8080/message
+Content-Type: application/json
+{}
+
+### Post bad data
+POST http://localhost:8080/message
+Content-Type: application/json
+{
+ "id": "1"
+}
+
+### Delete message by its id ok
+DELETE http://localhost:8080/message/1
+
+### Delete message by its id ok
+DELETE http://localhost:8080/message/1
+
+### Delete message by its id ko
+DELETE http://localhost:8080/message/ko
 
 
+### Update message ok
+PUT http://localhost:8080/message/1
+Content-Type: application/json
 
+{
+ "id" : "2",
+ "text": "Salut!"
+}
+
+### Update message no body
+PUT http://localhost:8080/message/2
+Content-Type: application/json
+
+### Update message empty body
+PUT http://localhost:8080/message/2
+Content-Type: application/json
+
+{
+}
+
+### Update message empty wrong body
+PUT http://localhost:8080/message/2
+Content-Type: application/json
+
+{
+ "id": 1
+}
 
 
 
