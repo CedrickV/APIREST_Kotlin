@@ -13,7 +13,7 @@ class MessageController {
     @Autowired
     private lateinit var messageDao: MessageDao
 
-    @GetMapping("/message/{id}")
+    @GetMapping("/messages/{id}")
     fun index(@PathVariable id: String): ResponseEntity<Any> {
         var message : Message?
         message =messageDao.findById(id = id).orElse(null)
@@ -24,7 +24,7 @@ class MessageController {
         return ResponseEntity.ok(message)
     }
 
-    @PostMapping("/message")
+    @PostMapping("/messages")
     fun post(@RequestBody message: Message): ResponseEntity<Any> {
         val addedMessage: Message? = messageDao.save(message)
         if (addedMessage == null) {
