@@ -15,7 +15,7 @@ data class Beer(
     @Column(nullable = false)
     var name: String,
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     var breweryId : Int
 )
 
