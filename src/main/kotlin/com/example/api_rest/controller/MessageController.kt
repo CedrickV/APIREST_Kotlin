@@ -49,6 +49,20 @@ class MessageController {
                 HttpStatus.INTERNAL_SERVER_ERROR)
         }
         messageDao.delete(message)
+
         return ResponseEntity.ok("Message supprimer avec succès")
+    }
+
+    @PutMapping("message/{id}")
+    fun updateMessage(@PathVariable id: String, @RequestBody message: Message): ResponseEntity<Any> {
+        var existingMessage = messageDao.findById(id).orElse(null)
+        if (existingMessage == null) {
+            return ResponseEntity(
+                hashMapOf(Pair("message", "Message not found you fucking stupid retarted donkey bitch")),
+                HttpStatus.NOT_FOUND)
+        }
+        existingMessage.text = message.text
+        var updatedMessage = messageDao.save(existingMessage)
+        return ResponseEntity.ok(updatedMessage)
     }
 }

@@ -62,9 +62,9 @@ Content-Type: application/json
 }
 
 ### Delete message by its id ok
-DELETE http://localhost:8080/message/1
+DELETE http://localhost:8080/message/ok
 
-### Delete message by its id ok
+### Delete message by its id 1
 DELETE http://localhost:8080/message/1
 
 ### Delete message by its id ko
@@ -72,7 +72,7 @@ DELETE http://localhost:8080/message/ko
 
 
 ### Update message ok
-PUT http://localhost:8080/message/1
+PUT http://localhost:8080/message/ok
 Content-Type: application/json
 
 {
