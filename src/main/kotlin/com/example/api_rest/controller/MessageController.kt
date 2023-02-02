@@ -13,7 +13,7 @@ class MessageController {
     @Autowired
     private lateinit var messageDao: MessageDao
 
-    @GetMapping("/{id}")
+    @GetMapping("/message/{id}")
     fun index(@PathVariable id: String): ResponseEntity<Any> {
         var message : Message?
         message =messageDao.findById(id = id).orElse(null)
@@ -23,5 +23,15 @@ class MessageController {
                 HttpStatus.NOT_FOUND)
         return ResponseEntity.ok(message)
     }
-}
 
+    @PostMapping("/message")
+    fun post(@RequestBody message: Message): ResponseEntity<Any> {
+        val addedMessage: Message? = messageDao.save(message)
+        if (addedMessage == null) {
+            return ResponseEntity(
+                hashMapOf(Pair("message", "failed to add message")),
+                HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+        return ResponseEntity.ok(addedMessage)
+    }
+}
