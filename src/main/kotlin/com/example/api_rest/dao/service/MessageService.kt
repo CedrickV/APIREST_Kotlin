@@ -1,7 +1,7 @@
-package com.example.api_rest.service
+package com.example.api_rest.dao.service
 
 import com.example.api_rest.model.Message
-import com.example.api_rest.repository.MessageRepository
+import com.example.api_rest.dao.repository.MessageRepository
 import org.springframework.stereotype.Service
 import java.util.*
 
